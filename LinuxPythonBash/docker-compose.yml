@@ -1,0 +1,10 @@
+services:
+  jwt-tools:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jwt-tools
+    working_dir: /work
+    volumes:
+      - ..:/work
+    entrypoint: ["bash"]
