@@ -128,6 +128,24 @@ docker compose build
 docker compose run --rm jwt-tools ./LinuxPythonBash/generate_jwt_assets.sh
 ```
 
+### Important About Line Endings
+
+Linux shell files in this repository must use `LF` line endings, not `CRLF`.
+
+If a Windows editor converts `LinuxPythonBash/generate_jwt_assets.sh` to `CRLF`, Docker may fail with an error similar to:
+
+```text
+invalid option name ... set: pipefail
+```
+
+This repository includes `.gitattributes` to help keep Linux-facing files in the correct format:
+
+- `*.sh` -> `LF`
+- `Dockerfile` -> `LF`
+- `*.yml` and `*.yaml` -> `LF`
+
+If the error appears again, convert the affected Linux file back to `LF` and rebuild the container.
+
 ### Where The Files Go
 
 By default, the Linux script writes files to this folder in the repository root:

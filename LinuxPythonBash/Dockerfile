@@ -1,16 +1,9 @@
-FROM ubuntu:24.04
+FROM python:3.12-alpine
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN apk add --no-cache \
        bash \
-       ca-certificates \
        openssl \
-       python3 \
-       python3-pip \
-    && python3 -m pip install --break-system-packages --no-cache-dir cryptography \
-    && rm -rf /var/lib/apt/lists/*
+    && python3 -m pip install --no-cache-dir cryptography
 
 WORKDIR /work
 
